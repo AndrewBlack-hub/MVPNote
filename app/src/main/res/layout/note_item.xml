@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/layout_margin_8dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:padding="15dp">
+        android:layout_margin="@dimen/layout_margin_8dp"
+        android:padding="@dimen/padding_15dp">
 
         <TextView
             android:id="@+id/textViewNoteTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_width_0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_18sp"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,9 +25,9 @@
 
         <TextView
             android:id="@+id/textViewDataOfChangeRecyclerView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_width_0dp"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="@dimen/text_size_15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent"
