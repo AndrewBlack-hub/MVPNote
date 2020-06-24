@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NoteMVP</string>
+    <string name="hello_blank_fragment">Временный фрагмент</string>
 </resources>
