@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/placeholder">
-    <fragment android:id="@+id/placeholder" >
+    app:startDestination="@id/home_dest">
+    <fragment android:id="@+id/home_dest" >
         <action
-            android:id="@+id/action_placeholder_to_placeholder2"
-            app:destination="@id/placeholder2" />
+            android:id="@+id/action_home_dest_to_dest_create_note"
+            app:destination="@id/dest_create_note" />
     </fragment>
-    <fragment android:id="@+id/placeholder2" >
+    <fragment android:id="@+id/dest_create_note" >
         <action
-            android:id="@+id/action_placeholder2_to_placeholder"
-            app:destination="@id/placeholder" />
+            android:id="@+id/action_dest_create_note_to_home_dest"
+            app:destination="@id/home_dest" />
     </fragment>
 </navigation>
