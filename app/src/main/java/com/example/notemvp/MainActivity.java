@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar mainToolbar = findViewById(R.id.toolbar);
-        setActionBar(mainToolbar);
+        setSupportActionBar(mainToolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         setupNavigationController(navController);
