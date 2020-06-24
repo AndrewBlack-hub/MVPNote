@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Блокнот</string>
-    <string name="create_note">Создать заметку</string>
+    <string name="create_and_editing_note">Создание и редактирование заметки</string>
 </resources>
