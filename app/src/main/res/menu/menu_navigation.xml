@@ -8,7 +8,7 @@
         app:showAsAction="never"/>
     <item
         android:id="@+id/dest_create_note"
-        android:title="@string/create_note"
+        android:title="@string/create_and_editing_note"
         app:showAsAction="never"/>
 
 </menu>
