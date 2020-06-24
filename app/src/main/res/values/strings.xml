@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">NoteMVP</string>
-    <string name="hello_blank_fragment">a temporary fragment</string>
+    <string name="app_name">Блокнот</string>
+    <string name="hello_blank_fragment">временный фрагмент</string>
 </resources>
