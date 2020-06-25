@@ -3,7 +3,7 @@ package com.example.notemvp.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "note")
+@Entity(tableName = "notes")
 public class Note {
 
     @PrimaryKey(autoGenerate = true)
