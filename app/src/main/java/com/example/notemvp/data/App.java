@@ -8,9 +8,8 @@ public class App extends Application {
 
     private static App instance;
 
-    private NotesDatabase database;
-    private NotesDao notesDao;
-    private final String DB_NAME = "notes.db";
+    private static   NotesDatabase database;
+    private static final String DB_NAME = "notes.db";
 
     public static App getInstance() {
         return instance;
@@ -22,8 +21,6 @@ public class App extends Application {
         instance = this;
         database = Room.databaseBuilder(getApplicationContext(), NotesDatabase.class, DB_NAME)
                 .build();
-
-        notesDao = database.notesDao();
     }
 
     public NotesDatabase getDatabase() {
@@ -32,13 +29,5 @@ public class App extends Application {
 
     public void setDatabase(NotesDatabase database) {
         this.database = database;
-    }
-
-    public NotesDao getNotesDao() {
-        return notesDao;
-    }
-
-    public void setNotesDao(NotesDao notesDao) {
-        this.notesDao = notesDao;
     }
 }
