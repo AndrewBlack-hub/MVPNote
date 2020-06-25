@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/textViewNoteTitle"
-            android:layout_width="@dimen/layout_width_0dp"
+            android:layout_width="@dimen/size_zero_dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_18sp"
             app:layout_constraintEnd_toStartOf="@id/guideline"
@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/textViewDataOfChangeRecyclerView"
-            android:layout_width="@dimen/layout_width_0dp"
+            android:layout_width="@dimen/size_zero_dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_15sp"
             app:layout_constraintEnd_toEndOf="parent"
