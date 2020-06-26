@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/textViewDataOfChangeRecyclerView"
+            android:id="@+id/textViewNoteData"
             android:layout_width="@dimen/size_zero_dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_15sp"
