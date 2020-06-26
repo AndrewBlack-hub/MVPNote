@@ -28,7 +28,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
         this.onNoteClickListener = onNoteClickListener;
     }
 
-    protected NotesAdapter() {
+    public NotesAdapter() {
         super(DIFF_CALLBACK);
     }
 
@@ -65,7 +65,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
 
         private TextView textViewTitle, textViewDate;
 
-        public NotesViewHolder(@NonNull View itemView) {
+        public NotesViewHolder(@NonNull final View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewNoteTitle);
             textViewDate = itemView.findViewById(R.id.textViewNoteData);
@@ -73,7 +73,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
                 @Override
                 public void onClick(View v) {
                     if (onNoteClickListener != null) {
-                        onNoteClickListener.onNoteClick(getAdapterPosition());
+                        onNoteClickListener.onNoteClick(itemView.getId());
                     }
                 }
             });
