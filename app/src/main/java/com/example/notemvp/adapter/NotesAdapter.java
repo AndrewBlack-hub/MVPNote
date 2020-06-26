@@ -21,7 +21,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
     private OnNoteClickListener onNoteClickListener;
 
     public interface OnNoteClickListener {
-        void onNoteClick(int position);
+        void onNoteClick(int id);
     }
 
     public void setOnNoteClickListener(OnNoteClickListener onNoteClickListener) {
