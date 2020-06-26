@@ -20,7 +20,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
 
     private OnNoteClickListener onNoteClickListener;
 
-    interface OnNoteClickListener {
+    public interface OnNoteClickListener {
         void onNoteClick(int position);
     }
 
