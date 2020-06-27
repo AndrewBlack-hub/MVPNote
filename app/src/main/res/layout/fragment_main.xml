@@ -8,6 +8,7 @@
     tools:context=".MainFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_8dp"
@@ -27,5 +28,17 @@
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewEmptyNote"
+        android:layout_width="@dimen/width_666dp"
+        android:layout_height="@dimen/height_492dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:src="@mipmap/ic_launcher_foreground"
+        android:contentDescription="@string/empty_note_pic"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
