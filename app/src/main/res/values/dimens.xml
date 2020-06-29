@@ -8,6 +8,7 @@
     <dimen name="padding_15dp">15dp</dimen>
     <dimen name="text_size_18sp">18sp</dimen>
     <dimen name="text_size_15sp">15sp</dimen>
-    <dimen name="img_empty_note_970dp_width">970dp</dimen>
-    <dimen name="img_empty_note_598dp_height">598dp</dimen>
+    <dimen name="img_empty_note_width">970dp</dimen>
+    <dimen name="img_empty_note_height">598dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
 </resources>

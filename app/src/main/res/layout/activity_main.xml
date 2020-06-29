@@ -28,9 +28,9 @@
         tools:ignore="FragmentTagUsage" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/img_empty_note_970dp_width"
-        android:layout_height="@dimen/img_empty_note_598dp_height"
+        android:id="@+id/imageViewEmptyNote"
+        android:layout_width="@dimen/img_empty_note_width"
+        android:layout_height="@dimen/img_empty_note_height"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@string/img_empty_note"

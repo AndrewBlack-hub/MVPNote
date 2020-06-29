@@ -8,7 +8,7 @@
     tools:context=".MainFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewMainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_8dp"
@@ -31,14 +31,14 @@
 
     <ImageView
         android:id="@+id/imageViewEmptyNote"
-        android:layout_width="@dimen/width_666dp_image_empty_note"
-        android:layout_height="@dimen/height_492dp_image_empty_note"
+        android:layout_width="@dimen/img_empty_note_width"
+        android:layout_height="@dimen/img_empty_note_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
         tools:src="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/empty_note_pic"/>
+        android:contentDescription="@string/img_empty_note"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
