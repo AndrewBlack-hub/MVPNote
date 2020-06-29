@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Блокнот</string>
     <string name="create_and_editing_note">Создание и редактирование заметки</string>
+    <string name="img_empty_note">картинка пустого листка-заметки</string>
 </resources>
