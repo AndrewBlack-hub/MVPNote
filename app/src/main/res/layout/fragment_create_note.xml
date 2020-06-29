@@ -12,34 +12,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:padding="@dimen/padding_8dp"
+        android:padding="@dimen/padding_editText_title"
         android:inputType="textPersonName"
         android:background="@android:color/transparent"
         android:hint="@string/enter_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="@string/auto_fill_hint_title" />
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:padding="@dimen/padding_8dp"
+        android:padding="@dimen/padding_editText_title"
         android:background="@android:color/transparent"
         android:hint="@string/enter_description"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
+        android:autofillHints="@string/auto_fill_hint_description" />
 
     <TextView
         android:id="@+id/textViewDateOfChangeNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/margin_top_textView_date"
+        android:layout_marginStart="@dimen/margin_start_textView_date"
         android:visibility="invisible"
         android:text="@string/date_of_update"
         app:layout_constraintStart_toStartOf="parent"
