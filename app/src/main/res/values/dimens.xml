@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_recyclerView">8dp</dimen>
-    <dimen name="margin_end_fab">32dp</dimen>
-    <dimen name="margin_bottom_fab">32dp</dimen>
+    <dimen name="fab_margin">32dp</dimen>
     <dimen name="size_zero_dp">0dp</dimen>
     <dimen name="layout_margin_constraint_layout">8dp</dimen>
     <dimen name="padding_constraint_layout">15dp</dimen>

@@ -6,4 +6,6 @@
     <string name="enter_description">Введите описание</string>
     <string name="date_of_update">Обновлено: %s</string>
     <string name="save_note">сохранить заметку</string>
+    <string name="auto_fill_hint_description">Описание</string>
+    <string name="auto_fill_hint_title">Название</string>
 </resources>
