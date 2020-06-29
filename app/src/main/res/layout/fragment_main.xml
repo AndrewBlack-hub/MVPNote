@@ -31,8 +31,8 @@
 
     <ImageView
         android:id="@+id/imageViewEmptyNote"
-        android:layout_width="@dimen/width_666dp"
-        android:layout_height="@dimen/height_492dp"
+        android:layout_width="@dimen/width_666dp_image_empty_note"
+        android:layout_height="@dimen/height_492dp_image_empty_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
