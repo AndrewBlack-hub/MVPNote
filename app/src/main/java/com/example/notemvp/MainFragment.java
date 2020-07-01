@@ -2,6 +2,8 @@ package com.example.notemvp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,11 +25,16 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        recyclerViewListNotes = container.findViewById(R.id.recyclerViewMainFragment);
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerViewListNotes = view.findViewById(R.id.recyclerViewMainFragment);
         adapter = new NotesAdapter();
         recyclerViewListNotes.setLayoutManager(new LinearLayoutManager(getContext()));
-        presenter.getData(this);
         recyclerViewListNotes.setAdapter(adapter);
-        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 }
