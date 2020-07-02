@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.notemvp.R;
 import com.example.notemvp.model.Note;
 
-import java.util.List;
 
 public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder> {
 
@@ -21,7 +20,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
     private OnNoteClickListener onNoteClickListener;
 
     public interface OnNoteClickListener {
-        void onNoteClick(int id);
+        void onNoteClick(Note note);
     }
 
     public void setOnNoteClickListener(OnNoteClickListener onNoteClickListener) {
@@ -73,7 +72,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
                 @Override
                 public void onClick(View v) {
                     if (onNoteClickListener != null) {
-                        onNoteClickListener.onNoteClick(itemView.getId());
+                        onNoteClickListener.onNoteClick(getItem(getAdapterPosition()));
                     }
                 }
             });
