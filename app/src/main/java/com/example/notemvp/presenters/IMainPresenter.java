@@ -10,6 +10,5 @@ import java.util.List;
 public interface IMainPresenter {
     void onNoteClicked();
     void deleteNote(int position);
-    void onCreateNoteClicked();
     LiveData<List<Note>> getData();
 }
