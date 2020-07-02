@@ -21,11 +21,12 @@ import com.example.notemvp.presenters.IMainPresenter;
 import com.example.notemvp.presenters.MainFragmentPresenter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class MainFragment extends Fragment {
 
-    private RecyclerView recyclerViewListNotes;
     private NotesAdapter adapter = new NotesAdapter();
     private IMainPresenter presenter = new MainFragmentPresenter(App.getInstance().getDatabase().notesDao());
 
@@ -39,7 +40,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerViewListNotes = view.findViewById(R.id.recyclerViewMainFragment);
+        RecyclerView recyclerViewListNotes = view.findViewById(R.id.recyclerViewMainFragment);
         recyclerViewListNotes.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewListNotes.setAdapter(adapter);
         presenter.getData().observe(getViewLifecycleOwner(), new Observer<List<Note>>() {
@@ -63,7 +64,7 @@ public class MainFragment extends Fragment {
 
         recyclerViewListNotes.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) {
                     fab.hide();
