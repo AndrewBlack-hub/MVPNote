@@ -27,17 +27,4 @@
         app:navGraph="@navigation/nav_graph"
         tools:ignore="FragmentTagUsage" />
 
-    <ImageView
-        android:id="@+id/imageViewEmptyNote"
-        android:layout_width="@dimen/img_empty_note_width"
-        android:layout_height="@dimen/img_empty_note_height"
-        app:layout_constraintBottom_toBottomOf="@+id/navHostFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/img_empty_note"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
