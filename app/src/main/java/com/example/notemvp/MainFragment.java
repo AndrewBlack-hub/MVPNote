@@ -60,9 +60,9 @@ public class MainFragment extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                if (dy > 0) {
                     fab.hide();
-                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                } else if (dy < 0) {
                     fab.show();
                 }
             }
