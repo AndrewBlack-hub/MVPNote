@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,7 @@ import com.example.notemvp.data.App;
 import com.example.notemvp.model.Note;
 import com.example.notemvp.presenters.IMainPresenter;
 import com.example.notemvp.presenters.MainFragmentPresenter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -44,6 +46,13 @@ public class MainFragment extends Fragment {
             @Override
             public void onChanged(List<Note> notesFromLiveData) {
                 adapter.submitList(notesFromLiveData);
+            }
+        });
+        FloatingActionButton fab = view.findViewById(R.id.createNoteBtn);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.dest_create_note);
             }
         });
     }
