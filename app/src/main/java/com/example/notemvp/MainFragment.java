@@ -48,12 +48,25 @@ public class MainFragment extends Fragment {
                 adapter.submitList(notesFromLiveData);
             }
         });
-        FloatingActionButton fab = view.findViewById(R.id.createNoteBtn);
+        final FloatingActionButton fab = view.findViewById(R.id.createNoteBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(v).navigate(R.id.dest_create_note);
             }
         });
+
+        recyclerViewListNotes.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                    fab.hide();
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                    fab.show();
+                }
+            }
+        });
+
     }
 }
