@@ -1,17 +1,22 @@
 package com.example.notemvp.presenters;
 
-import android.content.Context;
-import androidx.navigation.NavController;
-import com.example.notemvp.R;
-import java.lang.ref.WeakReference;
+import androidx.lifecycle.LiveData;
+import com.example.notemvp.data.NotesDao;
+import com.example.notemvp.model.Note;
+
+import java.util.List;
 
 public class MainFragmentPresenter implements IMainPresenter {
 
-    private WeakReference<Context> contextWR;
-    private NavController navController;
+    private NotesDao notesDao;
 
-    public MainFragmentPresenter(Context context) {
-        contextWR = new WeakReference<>(context);
+    public MainFragmentPresenter(NotesDao notesDao) {
+        this.notesDao = notesDao;
+    }
+
+    @Override
+    public LiveData<List<Note>> getData() {
+         return notesDao.getAllNotes();
     }
 
     @Override
@@ -20,10 +25,5 @@ public class MainFragmentPresenter implements IMainPresenter {
 
     @Override
     public void deleteNote(int position) {
-    }
-
-    @Override
-    public void onCreateNoteClicked() {
-        navController.navigate(R.id.dest_create_note);
     }
 }

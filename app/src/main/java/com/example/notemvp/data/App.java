@@ -20,6 +20,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         database = Room.databaseBuilder(getApplicationContext(), NotesDatabase.class, DB_NAME)
+                .allowMainThreadQueries()
                 .build();
     }
 
