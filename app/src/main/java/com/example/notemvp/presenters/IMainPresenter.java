@@ -5,5 +5,5 @@ public interface IMainPresenter {
     void onNoteClicked();
     void deleteNote(int position);
     void onCreateNoteClicked();
-    void Data();
+    void getData();
 }

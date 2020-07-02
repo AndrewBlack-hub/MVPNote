@@ -35,6 +35,7 @@ public class MainFragment extends Fragment {
         recyclerViewListNotes = view.findViewById(R.id.recyclerViewMainFragment);
         adapter = new NotesAdapter();
         recyclerViewListNotes.setLayoutManager(new LinearLayoutManager(getContext()));
+        presenter.getData();
         recyclerViewListNotes.setAdapter(adapter);
     }
 }

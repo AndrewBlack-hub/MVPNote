@@ -24,7 +24,7 @@ public class MainFragmentPresenter implements IMainPresenter {
     }
 
     @Override
-    public void Data() {
+    public void getData() {
         basePresenter.tread(new BasePresenter.Callback() {
             @Override
             public void callback() {
