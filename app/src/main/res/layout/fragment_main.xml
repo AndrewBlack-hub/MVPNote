@@ -33,12 +33,13 @@
         android:id="@+id/imageViewEmptyNote"
         android:layout_width="@dimen/img_empty_note_width"
         android:layout_height="@dimen/img_empty_note_height"
+        android:contentDescription="@string/img_empty_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         android:visibility="gone"
-        tools:src="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/img_empty_note"/>
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
