@@ -1,7 +1,7 @@
 package com.example.notemvp.presenters;
 
-import com.example.notemvp.CreateNoteFragment;
 import com.example.notemvp.ICreateNoteView;
+import com.example.notemvp.data.App;
 import com.example.notemvp.data.NotesDao;
 import com.example.notemvp.model.Note;
 
@@ -11,11 +11,11 @@ import java.util.Date;
 
 public class CreateNotePresenter implements ICreateNotePresenter {
 
-    private ICreateNoteView view = new CreateNoteFragment();
-    private NotesDao notesDao;
+    private ICreateNoteView view;
+    private NotesDao notesDao = App.getInstance().getDatabase().notesDao();
 
-    public CreateNotePresenter(NotesDao notesDao) {
-        this.notesDao = notesDao;
+    public CreateNotePresenter(ICreateNoteView view) {
+        this.view = view;
     }
 
     private boolean validation(String title, String description) {

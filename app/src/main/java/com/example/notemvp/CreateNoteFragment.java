@@ -15,8 +15,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.notemvp.data.App;
-import com.example.notemvp.model.Note;
 import com.example.notemvp.presenters.CreateNotePresenter;
 import com.example.notemvp.presenters.ICreateNotePresenter;
 
@@ -26,12 +24,7 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
     private EditText editTextTitle;
     private EditText editTextDescription;
 
-    private ICreateNotePresenter presenter = new CreateNotePresenter(App.getInstance().getDatabase().notesDao());
-    private Note note;
-
-    private String title;
-    private String description;
-
+    private ICreateNotePresenter presenter = new CreateNotePresenter(this);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,8 +44,8 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_save_note) {
-            title = editTextTitle.getText().toString();
-            description = editTextDescription.getText().toString();
+            String title = editTextTitle.getText().toString();
+            String description = editTextDescription.getText().toString();
             presenter.clickSaveNote(title, description);
         }
         return super.onOptionsItemSelected(item);
@@ -71,7 +64,7 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
 
     @Override
     public void showSuccessful() {
-        Toast.makeText(getContext(), "Успешное сохранение!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), R.string.successful_saving, Toast.LENGTH_SHORT).show();
         editTextTitle.setText("");
         editTextDescription.setText("");
     }
