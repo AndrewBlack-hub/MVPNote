@@ -46,7 +46,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onChanged(List<Note> notesFromLiveData) {
                 adapter.submitList(notesFromLiveData);
-                if (adapter.getItemCount() > 0) {
+                if (notesFromLiveData.size() > 0) {
                     view.findViewById(R.id.imageViewEmptyNote).setVisibility(View.GONE);
                 } else {
                     view.findViewById(R.id.imageViewEmptyNote).setVisibility(View.VISIBLE);
