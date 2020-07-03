@@ -1,7 +1,9 @@
 package com.example.notemvp.presenters;
 
+import com.example.notemvp.model.Note;
+
 public interface ICreateNotePresenter {
-    void saveNote();
+    void saveNote(Note note);
     void onClickedBtnHome();
-    void date();
+    void clickSaveNote(String title, String description);
 }
