@@ -1,6 +1,10 @@
 package com.example.notemvp.presenters;
 
+import android.os.Bundle;
+
 import androidx.lifecycle.LiveData;
+
+import com.example.notemvp.CreateNoteFragment;
 import com.example.notemvp.data.NotesDao;
 import com.example.notemvp.model.Note;
 
@@ -9,6 +13,7 @@ import java.util.List;
 public class MainFragmentPresenter implements IMainPresenter {
 
     private NotesDao notesDao;
+    private static final String BUNDLE_KEY = "note";
 
     public MainFragmentPresenter(NotesDao notesDao) {
         this.notesDao = notesDao;
@@ -19,8 +24,12 @@ public class MainFragmentPresenter implements IMainPresenter {
          return notesDao.getAllNotes();
     }
 
-    @Override
-    public void onNoteClicked() {
+    public Bundle sendNote(Note note) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(BUNDLE_KEY, note);
+        CreateNoteFragment fragment = new CreateNoteFragment();
+        fragment.setArguments(bundle);
+        return bundle;
     }
 
     @Override
