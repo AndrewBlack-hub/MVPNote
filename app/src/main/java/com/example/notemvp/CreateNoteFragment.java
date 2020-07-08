@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -52,10 +53,12 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         if (item.getItemId() == R.id.action_save_note) {
             String title = editTextTitle.getText().toString();
             String description = editTextDescription.getText().toString();
-            if (note.getId() != 0 || note.getId() != -1) {
+            if (note != null) {
                 presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
+                Navigation.findNavController(getView()).navigate(R.id.home_dest);
             } else {
                 presenter.clickSaveNote(title, description);
+                Navigation.findNavController(getView()).navigate(R.id.home_dest);
             }
 
         }
