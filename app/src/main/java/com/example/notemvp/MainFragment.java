@@ -67,12 +67,12 @@ public class MainFragment extends Fragment {
                 final Note localNote = new Note(note.getId(), note.getTitle(), note.getDescription()
                 , note.getDate());
                 presenter.deleteNote(note);
-                Snackbar snackbar = Snackbar.make(view, "Восстановить заметку?", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Восстановить", new View.OnClickListener() {
+                Snackbar snackbar = Snackbar.make(view, R.string.restore_a_note, Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.recover, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 presenter.insertNote(localNote);
-                                Snackbar.make(view,"Заметка восстановлена", Snackbar.LENGTH_SHORT)
+                                Snackbar.make(view, R.string.note_restored, Snackbar.LENGTH_SHORT)
                                         .show();
                             }
                         });
