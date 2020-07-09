@@ -10,4 +10,7 @@
     <string name="auto_fill_hint_title">Название</string>
     <string name="enter_all_fields">Заполните все поля!</string>
     <string name="successful_saving">Успешное сохранение!</string>
+    <string name="restore_a_note">Восстановить заметку?</string>
+    <string name="note_restored">Заметка восстановлена</string>
+    <string name="recover">Восстановить</string>
 </resources>

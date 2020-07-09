@@ -21,6 +21,7 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
 
     public interface OnNoteClickListener {
         void onNoteClick(Note note);
+        void onNoteLongClick(Note note);
     }
 
     public void setOnNoteClickListener(OnNoteClickListener onNoteClickListener) {
@@ -74,6 +75,15 @@ public class NotesAdapter extends ListAdapter<Note, NotesAdapter.NotesViewHolder
                     if (onNoteClickListener != null) {
                         onNoteClickListener.onNoteClick(getItem(getAdapterPosition()));
                     }
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (onNoteClickListener != null) {
+                        onNoteClickListener.onNoteLongClick(getItem(getAdapterPosition()));
+                    }
+                    return true;
                 }
             });
 

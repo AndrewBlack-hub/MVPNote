@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface IMainPresenter {
     Bundle createBundleForNote(Note note);
-    void deleteNote(int position);
+    void deleteNote(Note note);
+    void insertNote(Note note);
     LiveData<List<Note>> getData();
 }
