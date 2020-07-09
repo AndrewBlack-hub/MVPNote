@@ -58,7 +58,7 @@ public class MainFragment extends Fragment {
         adapter.setOnNoteClickListener(new NotesAdapter.OnNoteClickListener() {
             @Override
             public void onNoteClick(Note note) {
-                Navigation.findNavController(view).navigate(R.id.dest_create_note, presenter.sendNote(note));
+                Navigation.findNavController(view).navigate(R.id.dest_create_note, presenter.createBundleForNote(note));
             }
         });
 

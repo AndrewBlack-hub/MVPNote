@@ -24,7 +24,7 @@ public class MainFragmentPresenter implements IMainPresenter {
          return notesDao.getAllNotes();
     }
 
-    public Bundle sendNote(Note note) {
+    public Bundle createBundleForNote(Note note) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(BUNDLE_KEY, note);
         CreateNoteFragment fragment = new CreateNoteFragment();
