@@ -33,6 +33,12 @@ public class MainFragmentPresenter implements IMainPresenter {
     }
 
     @Override
-    public void deleteNote(int position) {
+    public void deleteNote(Note note) {
+        notesDao.deleteNote(note);
+    }
+
+    @Override
+    public void insertNote(Note note) {
+        notesDao.insertNote(note);
     }
 }

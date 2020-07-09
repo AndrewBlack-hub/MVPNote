@@ -20,6 +20,7 @@ import com.example.notemvp.model.Note;
 import com.example.notemvp.presenters.IMainPresenter;
 import com.example.notemvp.presenters.MainFragmentPresenter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -60,6 +61,23 @@ public class MainFragment extends Fragment {
             public void onNoteClick(Note note) {
                 Navigation.findNavController(view).navigate(R.id.dest_create_note, presenter.createBundleForNote(note));
             }
+
+            @Override
+            public void onNoteLongClick(Note note) {
+                final Note localNote = new Note(note.getId(), note.getTitle(), note.getDescription()
+                , note.getDate());
+                presenter.deleteNote(note);
+                Snackbar snackbar = Snackbar.make(view, "Восстановить заметку?", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Восстановить", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                presenter.insertNote(localNote);
+                                Snackbar.make(view,"Заметка восстановлена", Snackbar.LENGTH_SHORT)
+                                        .show();
+                            }
+                        });
+                snackbar.show();
+            }
         });
 
         final FloatingActionButton fab = view.findViewById(R.id.createNoteBtn);
@@ -81,6 +99,5 @@ public class MainFragment extends Fragment {
                 }
             }
         });
-
     }
 }
