@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.notemvp.model.Note;
 import com.example.notemvp.presenters.CreateNotePresenter;
 import com.example.notemvp.presenters.ICreateNotePresenter;
+import com.example.notemvp.presenters.MainFragmentPresenter;
 
 
 public class CreateNoteFragment extends Fragment implements ICreateNoteView {
@@ -28,7 +29,8 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
     private TextView textViewDate;
     private Note note;
 
-    private static final String BUNDLE_KEY = "note";
+    private String title;
+    private String description;
 
     private ICreateNotePresenter presenter = new CreateNotePresenter(this);
 
@@ -42,25 +44,24 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         textViewDate = view.findViewById(R.id.textViewDateOfChangeNote);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            note = bundle.getParcelable(BUNDLE_KEY);
+            note = bundle.getParcelable(MainFragmentPresenter.BUNDLE_KEY);
             initComponents(note);
+            textViewDate.setVisibility(View.VISIBLE);
         }
         return view;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        title = editTextTitle.getText().toString();
+        description = editTextDescription.getText().toString();
         if (item.getItemId() == R.id.action_save_note) {
-            String title = editTextTitle.getText().toString();
-            String description = editTextDescription.getText().toString();
             if (note != null) {
                 presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
-                Navigation.findNavController(getView()).navigate(R.id.home_dest);
             } else {
                 presenter.clickSaveNote(title, description);
-                Navigation.findNavController(getView()).navigate(R.id.home_dest);
             }
-
+            Navigation.findNavController(getView()).navigate(R.id.home_dest);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -79,15 +80,12 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
     @Override
     public void showSuccessful() {
         Toast.makeText(getContext(), R.string.successful_saving, Toast.LENGTH_SHORT).show();
-        editTextTitle.setText("");
-        editTextDescription.setText("");
     }
 
     @Override
     public void initComponents(Note note) {
         editTextTitle.setText(note.getTitle());
         editTextDescription.setText(note.getDescription());
-        textViewDate.setVisibility(View.VISIBLE);
         textViewDate.setText(String.format(getResources().getString(R.string.date_of_update), note.getDate()));
     }
 }

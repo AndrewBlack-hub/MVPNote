@@ -13,7 +13,7 @@ import java.util.List;
 public class MainFragmentPresenter implements IMainPresenter {
 
     private NotesDao notesDao;
-    private static final String BUNDLE_KEY = "note";
+    public static final String BUNDLE_KEY = "note";
 
     public MainFragmentPresenter(NotesDao notesDao) {
         this.notesDao = notesDao;
