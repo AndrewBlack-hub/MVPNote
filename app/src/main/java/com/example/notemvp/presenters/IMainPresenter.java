@@ -1,6 +1,7 @@
 package com.example.notemvp.presenters;
 
 
+import android.os.Bundle;
 import androidx.lifecycle.LiveData;
 
 import com.example.notemvp.model.Note;
@@ -8,7 +9,7 @@ import com.example.notemvp.model.Note;
 import java.util.List;
 
 public interface IMainPresenter {
-    void onNoteClicked();
+    Bundle createBundleForNote(Note note);
     void deleteNote(int position);
     LiveData<List<Note>> getData();
 }

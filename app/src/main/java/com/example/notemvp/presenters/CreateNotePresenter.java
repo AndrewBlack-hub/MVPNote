@@ -25,7 +25,7 @@ public class CreateNotePresenter implements ICreateNotePresenter {
     public void clickSaveNote(String title, String description) {
         if (validation(title, description)){
             Note note = new Note(title, description, date());
-            notesDao.insertNote(note);
+            saveNote(note);
             view.showSuccessful();
         } else {
             view.showMsgFailValid();
@@ -35,14 +35,19 @@ public class CreateNotePresenter implements ICreateNotePresenter {
     @Override
     public void saveNote(Note note) {
         notesDao.insertNote(note);
+    }
 
+    @Override
+    public void updateNote(Note note) {
+        notesDao.updateNote(note);
     }
 
     @Override
     public void onClickedBtnHome() {
     }
 
-    private String date() {
+    @Override
+    public String date() {
         Date currentDate = Calendar.getInstance().getTime();
         return DateFormat.getDateTimeInstance().format(currentDate);
     }

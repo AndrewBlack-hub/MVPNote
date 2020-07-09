@@ -54,6 +54,14 @@ public class MainFragment extends Fragment {
                 }
             }
         });
+
+        adapter.setOnNoteClickListener(new NotesAdapter.OnNoteClickListener() {
+            @Override
+            public void onNoteClick(Note note) {
+                Navigation.findNavController(view).navigate(R.id.dest_create_note, presenter.createBundleForNote(note));
+            }
+        });
+
         final FloatingActionButton fab = view.findViewById(R.id.createNoteBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
