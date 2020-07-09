@@ -29,9 +29,6 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
     private TextView textViewDate;
     private Note note;
 
-    private String title;
-    private String description;
-
     private ICreateNotePresenter presenter = new CreateNotePresenter(this);
 
     @Override
@@ -45,23 +42,24 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         Bundle bundle = getArguments();
         if (bundle != null) {
             note = bundle.getParcelable(MainFragmentPresenter.BUNDLE_KEY);
-            initComponents(note);
-            textViewDate.setVisibility(View.VISIBLE);
+            assert (note != null);
+                initComponents(note);
+                textViewDate.setVisibility(View.VISIBLE);
         }
         return view;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        title = editTextTitle.getText().toString();
-        description = editTextDescription.getText().toString();
+        String title = editTextTitle.getText().toString();
+        String description = editTextDescription.getText().toString();
         if (item.getItemId() == R.id.action_save_note) {
             if (note != null) {
                 presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
             } else {
                 presenter.clickSaveNote(title, description);
             }
-            Navigation.findNavController(getView()).navigate(R.id.home_dest);
+            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
         }
         return super.onOptionsItemSelected(item);
     }
