@@ -59,8 +59,12 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         String description = editTextDescription.getText().toString();
         if (item.getItemId() == R.id.action_save_note) {
             if (note != null) {
-                presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
-                Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                if (presenter.validation(title, description)) {
+                    presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
+                    Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                } else {
+                    showMsgFailValid();
+                }
             } else {
                 if (presenter.validation(title, description)) {
                     presenter.clickSaveNote(title, description);
@@ -70,7 +74,6 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
                     showMsgFailValid();
                 }
             }
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -126,8 +129,13 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
                                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        presenter.updateNote(newNoteForEquals());
-                                        Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                                        if (presenter.validation(editTextTitle.getText().toString(),
+                                                editTextDescription.getText().toString())) {
+                                                presenter.updateNote(newNoteForEquals());
+                                            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                                        } else {
+                                            showMsgFailValid();
+                                        }
                                     }
                                 });
                         builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {

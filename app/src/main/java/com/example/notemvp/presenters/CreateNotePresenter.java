@@ -11,11 +11,9 @@ import java.util.Date;
 
 public class CreateNotePresenter implements ICreateNotePresenter {
 
-    private ICreateNoteView view;
     private NotesDao notesDao = App.getInstance().getDatabase().notesDao();
 
     public CreateNotePresenter(ICreateNoteView view) {
-        this.view = view;
     }
 
     @Override
