@@ -18,18 +18,14 @@ public class CreateNotePresenter implements ICreateNotePresenter {
         this.view = view;
     }
 
-    private boolean validation(String title, String description) {
+    @Override
+    public boolean validation(String title, String description) {
         return !(title.isEmpty() || description.isEmpty());
     }
 
     public void clickSaveNote(String title, String description) {
-        if (validation(title, description)){
-            Note note = new Note(title, description, date());
-            saveNote(note);
-            view.showSuccessful();
-        } else {
-            view.showMsgFailValid();
-        }
+        Note note = new Note(title, description, date());
+        saveNote(note);
     }
 
     @Override

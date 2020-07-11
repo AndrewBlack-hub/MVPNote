@@ -67,7 +67,7 @@ public class MainFragment extends Fragment {
                 final Note localNote = new Note(note.getId(), note.getTitle(), note.getDescription()
                 , note.getDate());
                 presenter.deleteNote(note);
-                Snackbar snackbar = Snackbar.make(view, R.string.restore_a_note, Snackbar.LENGTH_INDEFINITE)
+                Snackbar snackbar = Snackbar.make(view, R.string.restore_a_note, Snackbar.LENGTH_LONG)
                         .setAction(R.string.recover, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

@@ -60,10 +60,17 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         if (item.getItemId() == R.id.action_save_note) {
             if (note != null) {
                 presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
+                Navigation.findNavController(requireView()).navigate(R.id.home_dest);
             } else {
-                presenter.clickSaveNote(title, description);
+                if (presenter.validation(title, description)) {
+                    presenter.clickSaveNote(title, description);
+                    showSuccessful();
+                    Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                } else {
+                    showMsgFailValid();
+                }
             }
-            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -111,23 +118,27 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                if (!(newNoteForEquals().equals(startNote()))) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
-                    .setMessage("Были внесены изменения. Сохранить?")
-                    .setCancelable(false)
-                    .setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            presenter.updateNote(newNoteForEquals());
-                            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
-                        }
-                    });
-                    builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
-                        }
-                    }).create().show();
+                if (note != null) {
+                    if (!(newNoteForEquals().equals(startNote()))) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                                .setMessage("Были внесены изменения. Сохранить?")
+                                .setCancelable(false)
+                                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        presenter.updateNote(newNoteForEquals());
+                                        Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                                    }
+                                });
+                        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                            }
+                        }).create().show();
+                    } else {
+                        Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                    }
                 } else {
                     Navigation.findNavController(requireView()).navigate(R.id.home_dest);
                 }
