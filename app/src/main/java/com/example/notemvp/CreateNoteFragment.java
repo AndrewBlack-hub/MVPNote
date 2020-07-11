@@ -1,8 +1,12 @@
 package com.example.notemvp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -85,5 +89,50 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         editTextTitle.setText(note.getTitle());
         editTextDescription.setText(note.getDescription());
         textViewDate.setText(String.format(getResources().getString(R.string.date_of_update), note.getDate()));
+    }
+
+    public Note startNote() {
+        return note;
+    }
+
+    @Override
+    public Note newNoteForEquals() {
+        Note newNoteForEquals = new Note();
+        newNoteForEquals.setId(note.getId());
+        newNoteForEquals.setTitle(editTextTitle.getText().toString());
+        newNoteForEquals.setDescription(editTextDescription.getText().toString());
+        newNoteForEquals.setDate(note.getDate());
+        return newNoteForEquals;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (!(newNoteForEquals().equals(startNote()))) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                    .setMessage("Были внесены изменения. Сохранить?")
+                    .setCancelable(false)
+                    .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            presenter.updateNote(newNoteForEquals());
+                            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                        }
+                    });
+                    builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                        }
+                    }).create().show();
+                } else {
+                    Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
     }
 }

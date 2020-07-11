@@ -43,10 +43,6 @@ public class CreateNotePresenter implements ICreateNotePresenter {
     }
 
     @Override
-    public void onClickedBtnHome() {
-    }
-
-    @Override
     public String date() {
         Date currentDate = Calendar.getInstance().getTime();
         return DateFormat.getDateTimeInstance().format(currentDate);
