@@ -1,8 +1,12 @@
 package com.example.notemvp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -55,11 +59,21 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         String description = editTextDescription.getText().toString();
         if (item.getItemId() == R.id.action_save_note) {
             if (note != null) {
-                presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
+                if (presenter.validation(title, description)) {
+                    presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
+                    goHome();
+                } else {
+                    showMsgFailValid();
+                }
             } else {
-                presenter.clickSaveNote(title, description);
+                if (presenter.validation(title, description)) {
+                    presenter.clickSaveNote(title, description);
+                    showSuccessful();
+                    goHome();
+                } else {
+                    showMsgFailValid();
+                }
             }
-            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -85,5 +99,54 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
         editTextTitle.setText(note.getTitle());
         editTextDescription.setText(note.getDescription());
         textViewDate.setText(String.format(getResources().getString(R.string.date_of_update), note.getDate()));
+    }
+
+    public Note startNote() {
+        return note;
+    }
+
+    @Override
+    public Note newNoteForEquals() {
+        Note newNoteForEquals = new Note();
+        newNoteForEquals.setId(note.getId());
+        newNoteForEquals.setTitle(editTextTitle.getText().toString());
+        newNoteForEquals.setDescription(editTextDescription.getText().toString());
+        newNoteForEquals.setDate(note.getDate());
+        return newNoteForEquals;
+    }
+
+    @Override
+    public String getTitleFromEditText() {
+        return editTextTitle.getText().toString();
+    }
+
+    @Override
+    public String getDescriptionFromEditText() {
+        return editTextTitle.getText().toString();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (note != null) {
+                    if (!(newNoteForEquals().equals(startNote()))) {
+                        presenter.createAlertDialog(getContext());
+                    } else {
+                        goHome();
+                    }
+                } else {
+                    goHome();
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+    }
+
+    @Override
+    public void goHome() {
+        Navigation.findNavController(requireView()).navigate(R.id.home_dest);
     }
 }
