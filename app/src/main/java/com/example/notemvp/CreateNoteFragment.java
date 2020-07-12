@@ -61,7 +61,7 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
             if (note != null) {
                 if (presenter.validation(title, description)) {
                     presenter.updateNote(new Note(note.getId(), title, description, presenter.date()));
-                    Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                    goHome();
                 } else {
                     showMsgFailValid();
                 }
@@ -69,7 +69,7 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
                 if (presenter.validation(title, description)) {
                     presenter.clickSaveNote(title, description);
                     showSuccessful();
-                    Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                    goHome();
                 } else {
                     showMsgFailValid();
                 }
@@ -116,6 +116,16 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
     }
 
     @Override
+    public String getTitleFromEditText() {
+        return editTextTitle.getText().toString();
+    }
+
+    @Override
+    public String getDescriptionFromEditText() {
+        return editTextTitle.getText().toString();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
@@ -123,35 +133,20 @@ public class CreateNoteFragment extends Fragment implements ICreateNoteView {
             public void handleOnBackPressed() {
                 if (note != null) {
                     if (!(newNoteForEquals().equals(startNote()))) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
-                                .setMessage("Были внесены изменения. Сохранить?")
-                                .setCancelable(false)
-                                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        if (presenter.validation(editTextTitle.getText().toString(),
-                                                editTextDescription.getText().toString())) {
-                                                presenter.updateNote(newNoteForEquals());
-                                            Navigation.findNavController(requireView()).navigate(R.id.home_dest);
-                                        } else {
-                                            showMsgFailValid();
-                                        }
-                                    }
-                                });
-                        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Navigation.findNavController(requireView()).navigate(R.id.home_dest);
-                            }
-                        }).create().show();
+                        presenter.createAlertDialog(getContext());
                     } else {
-                        Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                        goHome();
                     }
                 } else {
-                    Navigation.findNavController(requireView()).navigate(R.id.home_dest);
+                    goHome();
                 }
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+    }
+
+    @Override
+    public void goHome() {
+        Navigation.findNavController(requireView()).navigate(R.id.home_dest);
     }
 }

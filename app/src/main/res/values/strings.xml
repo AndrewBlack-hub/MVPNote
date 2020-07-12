@@ -13,4 +13,7 @@
     <string name="restore_a_note">Восстановить заметку?</string>
     <string name="note_restored">Заметка восстановлена</string>
     <string name="recover">Восстановить</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="save_the_changes">Были внесены изменения. Сохранить?</string>
 </resources>
