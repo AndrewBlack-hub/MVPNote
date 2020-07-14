@@ -17,9 +17,6 @@ public interface NotesDao {
     @Query("SELECT * FROM notes")
     LiveData<List<Note>> getAllNotes();
 
-    @Query("SELECT * FROM notes WHERE id == :noteId")
-    Note getNoteById(int noteId);
-
     @Insert
     void insertNote(Note note);
 

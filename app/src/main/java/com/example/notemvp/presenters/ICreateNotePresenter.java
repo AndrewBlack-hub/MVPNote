@@ -1,7 +1,6 @@
 package com.example.notemvp.presenters;
 
 import android.content.Context;
-import android.view.View;
 
 import com.example.notemvp.model.Note;
 
