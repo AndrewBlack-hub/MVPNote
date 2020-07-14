@@ -33,6 +33,11 @@ public class MainFragmentPresenter implements IMainPresenter {
     }
 
     @Override
+    public Note createLocaleNote(Note note) {
+        return new Note(note.getId(), note.getTitle(), note.getDescription(), note.getDate());
+    }
+
+    @Override
     public void deleteNote(Note note) {
         notesDao.deleteNote(note);
     }

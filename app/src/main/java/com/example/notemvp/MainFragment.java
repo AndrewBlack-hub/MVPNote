@@ -64,8 +64,7 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onNoteLongClick(Note note) {
-                final Note localNote = new Note(note.getId(), note.getTitle(), note.getDescription()
-                , note.getDate());
+                final Note localNote = presenter.createLocaleNote(note);
                 presenter.deleteNote(note);
                 Snackbar snackbar = Snackbar.make(view, R.string.restore_a_note, Snackbar.LENGTH_LONG)
                         .setAction(R.string.recover, new View.OnClickListener() {

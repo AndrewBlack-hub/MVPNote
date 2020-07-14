@@ -12,5 +12,6 @@ public interface IMainPresenter {
     Bundle createBundleForNote(Note note);
     void deleteNote(Note note);
     void insertNote(Note note);
+    Note createLocaleNote(Note note);
     LiveData<List<Note>> getData();
 }
