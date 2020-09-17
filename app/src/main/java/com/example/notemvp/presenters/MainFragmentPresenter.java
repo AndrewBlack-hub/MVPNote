@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.notemvp.CreateNoteFragment;
 import com.example.notemvp.data.NotesDao;
 import com.example.notemvp.model.Note;
 
@@ -27,8 +26,6 @@ public class MainFragmentPresenter implements IMainPresenter {
     public Bundle createBundleForNote(Note note) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(BUNDLE_KEY, note);
-        CreateNoteFragment fragment = new CreateNoteFragment();
-        fragment.setArguments(bundle);
         return bundle;
     }
 
