@@ -8,7 +8,7 @@ public class App extends Application {
 
     private static App instance;
 
-    private static   NotesDatabase database;
+    private static NotesDatabase database;
     private static final String DB_NAME = "notes.db";
 
     public static App getInstance() {
@@ -28,7 +28,4 @@ public class App extends Application {
         return database;
     }
 
-    public void setDatabase(NotesDatabase database) {
-        this.database = database;
-    }
 }

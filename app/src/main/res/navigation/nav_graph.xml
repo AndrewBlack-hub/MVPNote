@@ -22,5 +22,4 @@
             android:id="@+id/action_dest_create_note_to_home_dest"
             app:destination="@id/home_dest" />
     </fragment>
-
 </navigation>
